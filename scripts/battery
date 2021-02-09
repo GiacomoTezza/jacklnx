@@ -1,0 +1,13 @@
+#!/usr/bin/python
+
+bat = {}
+with open("/sys/class/power_supply/BAT0/uevent") as f:
+    data = f.readlines()
+
+    for line in data:
+        line = line.split("=")
+        bat[line[0]] = line[1].replace("\n", "")
+
+status_string = "⚡" if bat['POWER_SUPPLY_STATUS'] == "Charging" else ""
+render_string = f"{bat['POWER_SUPPLY_CAPACITY']}% 🔋{status_string}"
+print(render_string)

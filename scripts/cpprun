@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if g++ -o $1 $1.cpp $2 $3; then
+	echo -----COMPILED SUCCESSFULLY-----;
+	echo  ;
+	if ./$1; then
+		echo  ;
+		echo -----         END         -----;
+	else
+		echo  ;
+		echo -----ERROR RUNNING-----;
+	fi
+else
+	echo -----ERROR COMPILING-----;
+fi

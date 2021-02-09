@@ -33,7 +33,7 @@ tray-maxsize = 22
 
 modules-left = i3 currentapptitle 
 modules-center = date spotify
-modules-right = weather wired-network wireless-network lockscreen volume battery
+modules-right = weather network lockscreen volume battery
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -45,14 +45,24 @@ radius = 0
 type = internal/network
 interface = eno1
 label = <label-connected>
-label-connected = ⬇️ %downspeed:2%  🔌 %upspeed:2% ⬆️
-label-connected-padding = 4
+label-connected = cable
+label-connected-padding = 0
+label-disconnected =
 
 [module/wireless-network]
 type = internal/network
 interface = wlo1
 label = <label-connected>
-label-connected = ⬇️ %downspeed:2%  〰️ %upspeed:2% ⬆️
+label-connected = wifi
+label-connected-padding = 0
+label-disconnected =
+
+[module/network]
+type = internal/network
+interface = wlo1
+accumulate-stats = true
+label = <label-connected>
+label-connected = %downspeed:2% - %upspeed:2%
 label-connected-padding = 4
 
 [module/i3]
@@ -125,7 +135,7 @@ label-padding = 4
 type = custom/script
 interval = 3600
 label = %output%
-exec = weather Verona
+exec = weather Povo
 label-padding = 4
 
 [module/battery]
